@@ -1,94 +1,139 @@
-<!-- <label for="name">Nome: </label>
-<input id="name" type="text" [formControl]="name">
-<label for="userName">Nome do Usuário: </label>
-<input id="userName" type="text" [formControl]="userName">
-<label for="password">Senha: </label>
-<input id="password" type="password" [formControl]="password">
-<label for="name">Nome: </label>
-<input id="name" type="text" [formControl]="name"> -->
-
 <div class="card">
-    <div class="card-header">
-        Cadastro de Usuário
-    </div>
+  <div class="card-header">Cadastro de Usuário</div>
 
-    <div class="card-body">
-        <form [formGroup]="formCreateUser" (ngSubmit)="save">
+  <div class="card-body">
+    <form [formGroup]="formCreateUser" (ngSubmit)="(save)">
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="name">Nome</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="name"
+            type="text"
+            placeholder="Nome"
+            formControlName="name"
+          />
+          <span
+            *ngIf="
+              formCreateUser.get('name')?.errors &&
+              (formCreateUser.get('name')?.touched ||
+                formCreateUser.get('name')?.dirty)
+            "
+          >
+            Nome é obrigatório
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="user"
+          >Nome do Usuário</label
+        >
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="user"
+            type="text"
+            placeholder="Nome do Usuário"
+            formControlName="userName"
+          />
+          <span
+            *ngIf="
+              formCreateUser.get('userName')?.errors &&
+              (formCreateUser.get('userName')?.touched ||
+                formCreateUser.get('userName')?.dirty)
+            "
+          >
+            Nome do usuário é obrigatório
+          </span>
+        </div>
+      </div>
 
-            <div class="form-group row mb-2">
-                <label class="col-md-2 col-form-label" for="name">Nome</label>
-                <div class="col-md-8">
-                    <input class="form-control" id="name" type="text" placeholder="Nome" formControlName="name" />
-                    <span
-                        *ngIf="formCreateUser.get('name')?.errors && (formCreateUser.get('name')?.touched || formCreateUser.get('name')?.dirty)">
-                        Nome é obrigatório
-                    </span>
-                </div>
-            </div>
-            <div class="form-group row mb-2">
-                <label class="col-md-2 col-form-label" for="user">Nome do Usuário</label>
-                <div class="col-md-8">
-                    <input class="form-control" id="user" type="text" placeholder="Nome do Usuário"
-                        formControlName="userName" />
-                    <span
-                        *ngIf="formCreateUser.get('userName')?.errors && (formCreateUser.get('userName')?.touched || formCreateUser.get('userName')?.dirty)">
-                        Nome do usuário é obrigatório
-                    </span>
-                
-                </div>
-            </div>
-
-            <div class="form-group row mb-2">
-                <label class="col-md-2 col-form-label">Senha</label>
-                <div class="col-md-8">
-                    <input class="form-control" id="password" type="password" placeholder="Senha"
-                        formControlName="password" />
-                    <span
-                        *ngIf="formCreateUser.get('password')?.errors && (formCreateUser.get('password')?.touched || formCreateUser.get('password')?.dirty)">
-                        Senha é obrigatório
-                    </span>
-
-                </div>
-            </div>
-            <div class="form-group row mb-2">
-                <label class="col-md-2 col-form-label" for="email">Email</label>
-                <div class="col-md-8">
-                    <input class="form-control" id="email" type="email" placeholder="Email" formControlName="email" />
-                    <span *ngIf="formCreateUser.controls['email'].hasError('pattern')">
-                        Email inválido
-                    </span>
-                </div>
-            </div>
-            <div class="form-group row mb-2">
-                <label class="col-md-2 col-form-label" for="phoneId">Telefone</label>
-                <div class="col-md-8">
-                    <input class="form-control" id="phoneId" type="tel" mask="(00) 0 0000-0000" placeholder="Telefone"
-                        formControlName="phone" />
-                </div>
-            </div>
-            <div class="form-group row mb-2">
-                <label class="col-md-2 col-form-label" for="cpf">CPF</label>
-                <div class="col-md-8">
-                    <input class="form-control" id="cpf" type="tel" placeholder="CPF" mask="000.000.000-00"
-                        formControlName="cpf" />
-                    <span
-                        *ngIf="formCreateUser.get('cpf')?.errors && (formCreateUser.get('cpf')?.touched || formCreateUser.get('cpf')?.dirty)">
-                        CPF é obrigatório
-                    </span>
-              
-                </div>
-            </div>
-            <div class="form-group row mb-2">
-                <div class="offset-md-2 col-md-4">
-                    <button class="btn btn-primary mr-3" type="submit" style="width:80px"
-                        (click)="save(formCreateUser.value)">
-                        Salvar
-                    </button>
-                    <!-- <button class="btn btn-outline-secondary" type="button" (click)="cancel()">
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label">Senha</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="password"
+            type="password"
+            placeholder="Senha"
+            formControlName="password"
+          />
+          <span
+            *ngIf="
+              formCreateUser.get('password')?.errors &&
+              (formCreateUser.get('password')?.touched ||
+                formCreateUser.get('password')?.dirty)
+            "
+          >
+            Senha é obrigatório
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="email">Email</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="email"
+            type="email"
+            placeholder="Email"
+            formControlName="email"
+          />
+          <span *ngIf="formCreateUser.controls['email'].hasError('pattern')">
+            Email inválido
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="phoneId">Telefone</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="phoneId"
+            type="tel"
+            mask="(00) 0 0000-0000"
+            placeholder="Telefone"
+            formControlName="phone"
+          />
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <label class="col-md-2 col-form-label" for="cpf">CPF</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            id="cpf"
+            type="tel"
+            placeholder="CPF"
+            mask="000.000.000-00"
+            formControlName="cpf"
+          />
+          <span
+            *ngIf="
+              formCreateUser.get('cpf')?.errors &&
+              (formCreateUser.get('cpf')?.touched ||
+                formCreateUser.get('cpf')?.dirty)
+            "
+          >
+            CPF é obrigatório
+          </span>
+        </div>
+      </div>
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button
+            class="btn btn-primary mr-3"
+            type="submit"
+            style="width: 80px"
+            (click)="save(formCreateUser.value)"
+          >
+            Salvar
+          </button>
+          <!-- <button class="btn btn-outline-secondary" type="button" (click)="cancel()">
                         Cancelar
                     </button> -->
-                </div>
-            </div>
-        </form>
-    </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
