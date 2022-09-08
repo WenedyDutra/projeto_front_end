@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-header">
+        Lista de Tarefas
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Gerador</th>
+                <th>Responsavel</th>
+                <th>Status</th>
+                <th>Ações</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let task of tasks">
+                <td>{{task.id}}</td>    
+                <td>{{task.generator}}</td>
+                <td>{{task.statusDescription}}</td>
+                <td>{{task.status | transformstatus}}</td>
+              
+                <td>
+                    <button type="button" class="btn" (click)="activity(task.id)">
+                        <i class="fa fa-search" aria-hidden="true" ></i>
+                    </button>
+                    <!-- <button type="button" class="btn">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                    </button> -->
+                    <button type="button" class="btn" (click)="open(editemodal, task)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn" (click)="deleteTask(task.id)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                   
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<ng-template #editemodal let-modal>
+    <app-edit-task [tasks]="task">
+
+    </app-edit-task>
+</ng-template>

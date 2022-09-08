@@ -1,0 +1,42 @@
+<div class="modal-content" id="mymodal">
+    <div class="modal-header">
+        <h5 class="modal-title" id="editModalUser">Cadastro de Atividade</h5>
+        <button type="button" class="btn-close" aria-label="Close"  (click)="closeModal()"></button>
+        <!-- <button type="button" class="btn-close" data-mdb-dismiss="modal" (click)="close()" aria-label="Close"></button> -->
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formCreateActivity" (ngSubmit)="save">
+            <div class="row align-items-start">
+
+                <div class="col-lg-8">
+                    <div class="form-group">
+                        <label class="control-label required">Título</label>
+                        <input class="form-control" id="titleid" type="text" placeholder="Título"
+                            formControlName="activityTitle" required />
+                            <span class="alert"  *ngIf="formCreateActivity.get('activityTitle')?.errors && (formCreateActivity.get('activityTitle')?.touched && formCreateActivity.get('activityTitle')?.dirty).required">
+                                Descrição é obrigatório
+                            </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="form-group">
+                            <label class="control-label required">Descrição</label>
+                            <textarea class="form-control" id="descricaoId" type="text" placeholder="Descrição"
+                                formControlName="activityDescription" required></textarea>
+                                <span class="alert"  *ngIf="formCreateActivity.get('activityDescription')?.errors && (formCreateActivity.get('activityDescription')?.touched && formCreateActivity.get('activityDescription')?.dirty).required">
+                                    Descrição é obrigatório
+                                </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-mdb-dismiss="modal" (click)="closeModal()">Fechar
+        </button>
+        <button type="button" class="btn btn-success" (click)="save(formCreateActivity.value)">Salvar
+        </button>
+    </div>
+</div>

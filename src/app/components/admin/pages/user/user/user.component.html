@@ -1,0 +1,40 @@
+<div class="card">
+    <div class="card-header">
+        Lista de Usuário
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Nome</th>
+                <th>Nome do usuário</th>
+                <th>CPF</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Ações</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.userName}}</td>
+                <td>{{user.cpf | cpf}}</td>
+                <td>{{user.phone | mask: "(00) 0 0000-0000" }}</td>
+                <td>{{user.email}}</td>
+                <td>
+                    <button type="button" class="btn" (click)="editUser(user)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button type="button" class="btn" (click)="deleteUser(user.id)">
+                        <i class="fa fa-trash"></i>
+                    </button>
+
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+    
+</div>

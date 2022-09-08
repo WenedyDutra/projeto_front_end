@@ -1,0 +1,143 @@
+// @import "../../../../../../scss/base/variables";
+// @import "~src/scss/base/variables";
+
+.container{
+    width: 370px;
+    min-height: 300px;
+    padding: 25px 40px;
+    opacity: 0.9;
+
+    background: #FFF;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.25);
+    box-sizing: border-box;
+    border-radius: 10px;
+
+    display: flex;
+    //direção
+    flex-direction: column;
+    //forma que vai empurrar o itens um para cada lado
+    justify-content: space-between;
+    align-items: center;
+}
+
+//:host fazer só nesse componente
+:host {
+    .login{
+        height: 100vh;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background-size: cover;
+        background-image: url("../../../../../../assets/icon.jpg"); 
+        background-position-x: left;
+        background-position-y: center
+        
+    }
+    .container {
+        display: flex;
+        align-items: center;
+        width: 360px;
+        margin-right: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-items: center;
+        align-items: center;
+        ;
+
+        //      & significa form + label + input
+        &,
+        label,
+        input {
+            width: 100%;
+        }
+    }
+
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-bottom: 1px solid #4A4A4A;
+
+        svg {
+            width: 50px;
+            margin: none;
+        }
+
+        input {
+            height: 50px;
+            border: none;
+            font-size: 18px;
+
+            &::placeholder {
+                color: #4A4A4A;
+            }
+        }
+    }
+
+    btn-login {
+        .btn-login {
+            width: 100%;
+            height: 60px;
+            margin: 25px 0 0;
+            border-radius: 10px;
+            background: #0f3c4c;
+            font-size: 18px;
+            border: none;
+            color: #FFF;
+            cursor: pointer;
+
+            &:disabled {
+                cursor: no-drop;
+                background: darken(#0f3c4c, 20%);
+            }
+        }
+    }
+}
+.msg-erro{
+    color:rgb(217, 101, 101);
+    font-size: 18px;
+    margin-top: 20px;
+}
+.btn-login{
+    width: 100%;
+    height: 45px;
+    margin: 25px 0 0;
+    border-radius: 10px;
+    background: #0f3c4c;
+    font-size: 18px;
+    border: 0;
+    color: #FFF;
+    cursor: pointer;
+
+    &:disabled{
+        cursor: no-drop;
+        background: darken(#0f3c4c, 20%);
+    }
+}
+
+// $whith: #FFF;
+// $black: #4A4A4A;
+// $blue: #0f3c4c;
+// $red: rgb(217, 101, 101);
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,100;1,300;1,400&display=swap');
+
+*{
+    // padding-right: 25px;
+    margin: 0;
+    border: 0;
+    outline: none;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+body{
+    height: 100vh;
+    background-size: cover;
+    // background-image: url("../../../../../../assets/icon.jpg"); 
+}

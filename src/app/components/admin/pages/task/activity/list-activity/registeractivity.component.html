@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="card-header">
+        Tarefa
+    </div>
+
+    <div class="card-body">
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="titleid">Título</label>
+                <div class="col-md-8">
+                    {{task?.title}}
+                    
+                </div>
+                
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="descriptionid">Descrição</label>
+                <div class="col-md-8">
+                    {{task?.description}}
+                </div>
+            </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header">
+        Atividades
+        <button type="button" class="btn btn-outline-primary" (click)="open(mymodal)">
+            <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            Nova
+        </button>
+
+    </div>
+
+    <div class="card-body" *ngFor="let activity of task?.activities">
+        
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="titleid">Título</label>
+                <div class="col-md-8">
+                    {{activity.activityTitle}}
+                </div>
+            </div>
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label" for="descriptionid">Descrição</label>
+                <div class="col-md-8">
+                    {{activity.activityDescription}}
+                </div>
+            </div>
+    </div>
+
+</div>
+<ng-template #mymodal let-modal>
+    <app-create-activity [taskId]="id" [modal]="mymodal">
+
+    </app-create-activity>
+</ng-template>

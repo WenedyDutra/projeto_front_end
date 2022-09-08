@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from './core/services/auth/auth.service';
+import { ResponseLogin } from './resources/models/login/ResponseLogin';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'project-back';
+  clear: string;
+
+  authentication: string = localStorage.getItem('this.authenticate');
+  showMenu: boolean = false;
+  constructor(private authService: AuthService, private activatedRoute: ActivatedRoute, private router: Router) {
+
+  }
+  ngOnInit() {
+    this.authService.viewMenu.subscribe(view => this.showMenu = view);
+
+  }
+  logout() {
+    this.clear = localStorage.getItem('authenticate');
+    console.log(this.clear);
+    if (this.clear) {
+      localStorage.clear();
+      this.authService.showMenu();
+      this.router.navigate(
+        ["../login"], { relativeTo: this.activatedRoute }
+      );
+    }
+  }
 }

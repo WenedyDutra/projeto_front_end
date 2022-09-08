@@ -1,0 +1,56 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="editModalUser">Editar Cadastro de Tarefas</h5>
+        <button type="button" class="btn-close" data-mdb-dismiss="modal" (click)="closeModal()" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="formCreateTask" (ngSubmit)="save">
+            <div class="row align-items-start">
+                <label class="col-md-2 col-form-label">Responsável</label>
+                <select formControlName="responsible">
+                    <option *ngFor="let user of users" [value]="user.id">
+                        {{user.name}}
+                    </option>
+                    <span class="alert"  *ngIf="formCreatTask?.get('responsible')?.errors && (formCreatTask.get('responsible')?.touched && formCreatTask.get('responsible')?.dirty).required">
+                        Responsável é obrigatório
+                    </span>
+                </select>
+    
+                <div class="form-group row mb-2">
+                    <label class="col-md-2 col-form-label">Titulo</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" placeholder="Titulo" formControlName="title" />
+                        <span class="alert"  *ngIf="formCreatTask?.get('title')?.errors && (formCreatTask.get('title')?.touched && formCreatTask.get('title')?.dirty).required">
+                            Titulo é obrigatório
+                        </span>
+                    </div>
+
+                </div>
+                <label class="col-md-2 col-form-label">Status</label>
+                <select id="status" formControlName="status">
+                    <option *ngFor="let status of status | keyvalue" [ngValue]="status.key">
+                        {{filterStatus(status.value)}}
+                    </option>
+                    <span class="alert"  *ngIf="formCreatTask?.get('status')?.errors && (formCreatTask.get('status')?.touched && formCreatTask.get('status')?.dirty).required">
+                        Status é obrigatório
+                    </span>
+                </select>
+    
+                <div class="form-group row mb-2">
+                    <label class="col-md-2 col-form-label">Descrição</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" placeholder="Descrição da atividade"
+                            formControlName="description" />
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-mdb-dismiss="modal" (click)="closeModal()">Fechar
+        </button>
+        <button type="button" class="btn btn-success" (click)="save(formCreateTask.value)">Salvar
+        </button>
+    </div>
+</div>
