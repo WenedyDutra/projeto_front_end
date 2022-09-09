@@ -73,11 +73,9 @@ export class RegistertaskComponent implements OnInit {
       };
       this.taskService.createTask(this.requestCreateTask).subscribe((data) => {
         this.createdTask = data;
-        if (this.createdTask != null) {
           this.router.navigate(["../listTask"], {
             relativeTo: this.activitedRoute,
           });
-        }
         console.log(data);
       }),
         (error) => {

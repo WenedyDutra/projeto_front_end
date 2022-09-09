@@ -43,9 +43,7 @@ export class CreateActivityComponent implements OnInit {
       }
       this.taskService.createActivity(this.requestCreateActivity).subscribe(data => {
         this.createActivity = data;
-        if (this.createActivity != null) {
           this.closeModal();
-        }
       }),
         (error) => {
           console.error(error);

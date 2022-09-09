@@ -49,11 +49,9 @@ export class RegisterUserComponent implements OnInit {
       };
       this.authService.createUser(this.requestCreateUser).subscribe((data) => {
         this.createdUser = data;
-        if (this.createdUser != null) {
           this.router.navigate(["../listUser"], {
             relativeTo: this.activatedRoute,
           });
-        }
       }),
         (error) => {
           console.error(error);

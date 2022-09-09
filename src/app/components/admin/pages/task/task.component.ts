@@ -58,9 +58,7 @@ export class TaskComponent implements OnInit {
   public deleteTask(id: RequestDeleteTask) : void {
     this.taskService.deleteTask(id).subscribe((response) => {
       this.alertDelete = response;
-      if (this.alertDelete != null) {
         this.ngOnInit();
-      }
     }),
       (error) => {
         console.error(error);

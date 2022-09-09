@@ -63,9 +63,7 @@ export class UserComponent implements OnInit {
   public deleteUser(id: RequestDeleteUser): void {
     this.authService.deletetUser(id).subscribe((response) => {
       this.alertDelete = response;
-      if (this.alertDelete != null) {
         this.ngOnInit();
-      }
     }),
       (error) => {
         console.error(error);

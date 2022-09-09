@@ -52,9 +52,7 @@ export class EditUserComponent implements OnInit {
     this.authService.updateUser(user).subscribe((response) => {
       console.log(response);
       this.resultUser = response;
-      if (this.resultUser != null) {
         this.close();
-      }
     }),
       (error) => {
         console.error(error);

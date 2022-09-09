@@ -70,9 +70,7 @@ export class EditTaskComponent implements OnInit {
   public save(formCreateTask: RequestUpdateTask) : void {
     this.taskService.updateTask(formCreateTask).subscribe((response) => {
       this.resulTask = response;
-      if (this.resulTask != null) {
         this.closeModal();
-      }
     }),
       (error) => {
         console.error(error);
