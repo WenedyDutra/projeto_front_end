@@ -20,6 +20,7 @@ import { Transformstatus } from './resources/pipe/transformstatus';
 import { CpfPipe } from './resources/pipe/cfp';
 import { NgxMaskModule } from 'ngx-mask';
 import { QuillModule } from 'ngx-quill';
+import { StripHtmlPipe } from './resources/pipe/stripHtml';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { QuillModule } from 'ngx-quill';
     RegisteractivityComponent,
     CreateActivityComponent,
     Transformstatus,
-    CpfPipe
+    CpfPipe,
+    StripHtmlPipe
   ],
   imports: [
     BrowserModule,
