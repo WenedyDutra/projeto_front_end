@@ -16,13 +16,13 @@ export class AppComponent {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {}
+  
   ngOnInit() {
     this.authService.viewMenu.subscribe((view) => (this.showMenu = view));
   }
 
   public logout(): void {
     this.clear = localStorage.getItem("authenticate");
-    console.log(this.clear);
     if (this.clear) {
       localStorage.clear();
       this.authService.showMenu();

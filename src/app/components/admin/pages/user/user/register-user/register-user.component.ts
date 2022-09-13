@@ -37,7 +37,7 @@ export class RegisterUserComponent implements OnInit {
 
   ngOnInit() {}
 
-  public save(user: RequestCreateUser): void {
+  public save(): void {
     if (this.formCreateUser.valid) {
       this.requestCreateUser = {
         name: this.formCreateUser.value.name,

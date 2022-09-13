@@ -16,7 +16,7 @@ import { ResponseLogin } from "src/app/resources/models/login/ResponseLogin";
 })
 export class SignComponent implements OnInit {
   public formAuthentication!: FormGroup;
-  requestLogin: RequestLogin;
+  public requestLogin: RequestLogin;
   public authenticate: ResponseLogin;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,7 +40,6 @@ export class SignComponent implements OnInit {
     this.authService.login(this.requestLogin).subscribe((data) => {
       this.authenticate = data;
       if (this.authenticate != null) {
-        // this.viewMenu.emit(true)
         localStorage.setItem("token", this.authenticate.token);
         localStorage.setItem("authenticate", JSON.stringify(this.authenticate));
         this.authService.showMenu();

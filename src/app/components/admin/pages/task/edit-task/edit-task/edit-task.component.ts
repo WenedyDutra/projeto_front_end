@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { NgbActiveModal, NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import {  NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { AuthService } from "src/app/core/services/auth/auth.service";
 import { TaskService } from "src/app/core/services/task/task.service";
 import { ResponseLogin } from "src/app/resources/models/login/ResponseLogin";
@@ -35,7 +35,6 @@ export class EditTaskComponent implements OnInit {
   resulTask: ResponseUpdateTask;
   constructor(
     private taskService: TaskService,
-    private activeModal: NgbActiveModal,
     private authService: AuthService,
     private modalService: NgbModal
   ) {

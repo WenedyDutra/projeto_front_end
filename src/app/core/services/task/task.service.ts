@@ -21,7 +21,7 @@ export class TaskService {
     this.authenticated = localStorage.getItem("token");
   }
 
-  public listTask() {
+  public listTask(): Observable<ResponseGetAllTask[]> {
     return this.httpClient.get<ResponseGetAllTask[]>(
       "https://localhost:5001/api/task/lisTask",
       {
@@ -32,7 +32,7 @@ export class TaskService {
     );
   }
 
-  public listTaskId(id: string) {
+  public listTaskId(id: string): Observable<ResponseGetTaskId> {
     return this.httpClient.get<ResponseGetTaskId>(
       "https://localhost:5001/api/task/" + id,
       {
@@ -71,8 +71,7 @@ export class TaskService {
     );
   }
 
-  public deleteTask(requestDeleTask: RequestDeleteTask) {
-    console.log("https://localhost:5001/api/user/deleteUser" + requestDeleTask);
+  public deleteTask(requestDeleTask: RequestDeleteTask) :  Observable<ResponseDeleteTask>{
     return this.httpClient.delete<ResponseDeleteTask>(
       "https://localhost:5001/api/task/" + requestDeleTask,
       {

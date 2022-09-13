@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   Validators,
@@ -62,7 +61,7 @@ export class RegistertaskComponent implements OnInit {
       };
   }
 
-  public save(requestCreateTask: RequestCreateTask): void {
+  public save(): void {
     if (this.formRegisterTask.valid) {
       this.requestCreateTask = {
         generator: this.myObj.id,

@@ -22,7 +22,7 @@ export class CreateActivityComponent implements OnInit {
   formCreateActivity: FormGroup;
   closeResult: string;
 
-  constructor(private taskService: TaskService, private formBuilder: FormBuilder, private activeModal: NgbActiveModal, private router: Router, private activatedRoute: ActivatedRoute, private modalService: NgbModal) { }
+  constructor(private taskService: TaskService, private formBuilder: FormBuilder, private router: Router, private modalService: NgbModal) { }
   ngOnInit() {
     this.formCreateActivity = new FormGroup({
       activityTitle: new FormControl('', [Validators.required]),
@@ -33,7 +33,7 @@ export class CreateActivityComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
-  public save(activity: RequestCreateActivity): void {
+  public save(): void {
     if (this.formCreateActivity.valid) {
       this.requestCreateActivity =
       {

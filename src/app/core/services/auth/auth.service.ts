@@ -12,20 +12,18 @@ import { RequestUpdateUser } from "src/app/resources/models/user/RequestUpdateUs
 import { ResponseUpdateUser } from "src/app/resources/models/user/ResponseUpdateUser";
 import { RequestDeleteUser } from "src/app/resources/models/user/RequestDeleteUser";
 import { ResponseDeleteUser } from "src/app/resources/models/user/ResponseDeleteUser";
-import { ActivatedRoute, Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
 })
 export class AuthService {
-  authenticated: string;
+  public authenticated: string;
   public authenticate: ResponseLogin;
   public viewMenu = new EventEmitter<any>();
 
   constructor(
     private httpClient: HttpClient,
-    private activatedRoute: ActivatedRoute,
-    private router: Router
+   
   ) {
     this.authenticated = localStorage.getItem("token");
   }
@@ -37,7 +35,7 @@ export class AuthService {
     );
   }
 
-  public showMenu() {
+  public showMenu(): void {
     var token = localStorage.getItem("token");
     if (token) this.viewMenu.emit(true);
     else {
@@ -45,7 +43,7 @@ export class AuthService {
     }
   }
 
-  public listUser() {
+  public listUser() : Observable<ResponseGetAllUser[]>{
     return this.httpClient.get<ResponseGetAllUser[]>(
       "https://localhost:5001/api/user/listUser",
       {
@@ -56,7 +54,7 @@ export class AuthService {
     );
   }
 
-  public listUserId(requestGetUserId: RequestGetUserId) {
+  public listUserId(): Observable<ResponseGetUserId> {
     return this.httpClient.get<ResponseGetUserId>(
       "https://localhost:5001/api/user/",
       {
@@ -95,10 +93,7 @@ export class AuthService {
     );
   }
 
-  public deletetUser(requestDeleteUser: RequestDeleteUser) {
-    console.log(
-      "https://localhost:5001/api/user/deleteUser" + requestDeleteUser
-    );
+  public deletetUser(requestDeleteUser: RequestDeleteUser): Observable<ResponseDeleteUser>{
     return this.httpClient.delete<ResponseDeleteUser>(
       "https://localhost:5001/api/user/" + requestDeleteUser,
       {
